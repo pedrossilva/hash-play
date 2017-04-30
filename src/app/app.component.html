@@ -1,3 +1,12 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <div class="wrap">
+    <form (ngSubmit)="formSubmit()" [hidden]="play">
+      <app-form></app-form>
+      <div>
+        <button type="submit" class="btn btn-default pull-right">Play</button>
+      </div>
+    </form>
+    <app-frame *ngIf="play" [dataForm]="form.value"></app-frame>
+  </div>
+</div>
+<pre *ngIf="form">{{ form.value | json }}</pre>

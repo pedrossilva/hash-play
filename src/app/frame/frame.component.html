@@ -1,0 +1,42 @@
+<div class="frame" *ngIf="dataForm && !end">
+
+
+  <div *ngIf="!winner && !draw" class="alert alert-info">
+    <strong>
+      Player {{ dataForm.player1 }} <i class="fa" [class.fa-times]="playerX" [class.fa-circle-o]="!playerX"></i>
+    </strong>
+  </div>
+  <div *ngIf="winner" class="alert alert-success">
+    <strong>
+      Player <i class="fa" [class.fa-times]="winner == 'x'" [class.fa-circle-o]="winner == 'o'"></i> winner!
+    </strong>
+  </div>
+  <div *ngIf="draw" class="alert alert-warning">
+    <strong>
+      Draw!
+    </strong>
+  </div>
+
+  <ul class="wrap-fields">
+    <li *ngFor="let item of list; let i=index">
+      <app-field (click)="choice(i)" [player]="playerX ? 'x':'o'" [val]="item"
+                 [winner]="winners[i]"></app-field>
+    </li>
+
+    <div class="horizontal"></div>
+    <div class="vertical"></div>
+    <div *ngIf="draw || winner || end" class="overlay"></div>
+  </ul>
+
+  <div *ngIf="winner || draw">
+    <button class="btn btn-primary pull-right" (click)="newRound()">New</button>
+  </div>
+
+</div>
+
+
+
+<!--<div class="row">
+  <pre class="col-md-6">{{ list | json }}</pre>
+  <pre class="col-md-6">{{ winners | json }}</pre>
+</div>-->

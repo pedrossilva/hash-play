@@ -1,0 +1,121 @@
+:host {
+  display: block;
+  width: 2em;
+  height: 2em;
+}
+.field {
+  border: none;
+  background-color: transparent;
+  width: 2em;
+  height: 2em;
+  padding: 0;
+  text-align: center;
+  line-height: 2em;
+  outline: none;
+  box-sizing: border-box;
+}
+.pointer {
+  cursor: pointer;
+}
+.opaque {
+  opacity: 0;
+}
+:host:hover .opaque {
+  opacity: 0.1;
+}
+.winner {
+  color: green;
+}
+i.fa {
+  width: 1em;
+  height: 1em;
+}
+
+
+/* animation pulse */
+@-webkit-keyframes wave {
+  5% {
+    opacity: .6;
+  }
+  27% {
+    -webkit-transform: scale(1.8);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-moz-keyframes wave {
+  5% {
+    opacity: .6;
+  }
+  27% {
+    -moz-transform: scale(1.8);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-o-keyframes wave {
+  5% {
+    opacity: .6;
+  }
+  27% {
+    -o-transform: scale(1.8);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes wave {
+  5% {
+    opacity: .6;
+  }
+  27% {
+    -webkit-transform: scale(1.8);
+    -moz-transform: scale(1.8);
+    -ms-transform: scale(1.8);
+    transform: scale(1.8);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.winner {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -o-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.winner:after {
+  font-family: FontAwesome;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  -webkit-animation: wave 3s 1s infinite linear;
+  -moz-animation: wave 3s 1s infinite linear;
+  -o-animation: wave 3s 1s infinite linear;
+  animation: wave 3s 1s infinite linear;
+  zoom: 1;
+  filter: alpha(opacity=0);
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.winner.pulse-x:after {
+  content: "\F00D";
+}
+.winner.pulse-o:after {
+  content: "\F10C";
+}

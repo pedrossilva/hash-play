@@ -1,0 +1,80 @@
+.frame {
+  width: 15rem;
+}
+ul.wrap-fields {
+  font-size: 2.5rem;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  width: 6em;
+  height: 6em;
+  margin-bottom: 1rem;
+}
+ul.wrap-fields li {
+  list-style: none;
+  display: inline-block;
+  position: absolute;
+  border-color: #CCC;
+  z-index: 2;
+}
+ul.wrap-fields li:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+ul.wrap-fields li:nth-child(2) {
+  top: 0;
+  left: 2em;
+}
+ul.wrap-fields li:nth-child(3) {
+  top: 0;
+  left: 4em;
+}
+ul.wrap-fields li:nth-child(4) {
+  top: 2em;
+  left: 0;
+}
+ul.wrap-fields li:nth-child(5) {
+  top: 2em;
+  left: 2em;
+}
+ul.wrap-fields li:nth-child(6) {
+  top: 2em;
+  left: 4em;
+}
+ul.wrap-fields li:nth-child(7) {
+  top: 4em;
+  left: 0em;
+}
+ul.wrap-fields li:nth-child(8) {
+  top: 4em;
+  left: 2em;
+}
+ul.wrap-fields li:nth-child(9) {
+  top: 4em;
+  left: 4em;
+}
+.horizontal {
+  position: absolute;
+  width: 100%;
+  height: 2em;
+  top: 2em;
+  border-top: 1px solid #CCCCCC;
+  border-bottom: 1px solid #CCCCCC;
+  box-sizing: border-box;
+}
+.vertical {
+  position: absolute;
+  width: 2em;
+  height: 100%;
+  left: 2em;
+  border-left: 1px solid #CCCCCC;
+  border-right: 1px solid #CCCCCC;
+  box-sizing: border-box;
+}
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  /*background-color: rgba(255, 255, 255, 0.7);*/
+}

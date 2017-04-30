@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {FormComponent} from "./form/form.component";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+
+  play:boolean = false;
+  form:FormGroup;
+  @ViewChild(FormComponent) set formComponent(fc:FormComponent) {
+    setTimeout(() => {
+      this.form = fc.form;
+    })
+  }
+
+  formSubmit() {
+    this.play = true;
+  }
+
 }
