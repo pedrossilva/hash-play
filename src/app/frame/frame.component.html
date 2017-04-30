@@ -3,7 +3,7 @@
 
   <div *ngIf="!winner && !draw" class="alert alert-info">
     <strong>
-      Player {{ dataForm.player1 }} <i class="fa" [class.fa-times]="playerX" [class.fa-circle-o]="!playerX"></i>
+      Player {{ history[round][(playerX ? 'x': 'o')] }} <i class="fa" [class.fa-times]="playerX" [class.fa-circle-o]="!playerX"></i>
     </strong>
   </div>
   <div *ngIf="winner" class="alert alert-success">
