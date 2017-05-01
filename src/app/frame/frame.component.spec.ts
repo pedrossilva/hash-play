@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { FrameComponent } from './frame.component';
+import {FieldComponent} from "../field/field.component";
 
 describe('FrameComponent', () => {
   let component: FrameComponent;
@@ -11,7 +12,10 @@ describe('FrameComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FrameComponent ]
+      declarations: [
+        FrameComponent,
+        FieldComponent
+      ]
     })
     .compileComponents();
   }));

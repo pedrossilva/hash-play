@@ -13,8 +13,8 @@ export class FrameComponent implements OnInit {
   private winner:string;
   private draw:boolean = false;
   private winners:any = {};
-  private dataSet:{x:string,o:string,winner:string};
-  @Input() dataForm:any;
+  private dataSet:{x?:string,o?:string,winner?:string} = {};
+  @Input() dataForm:any = {};
   @Output() newPlay:EventEmitter<boolean> = new EventEmitter();
 
 

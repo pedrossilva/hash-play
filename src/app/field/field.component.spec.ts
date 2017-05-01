@@ -4,6 +4,8 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { FieldComponent } from './field.component';
+import {CommonModule} from "@angular/common";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 describe('FieldComponent', () => {
   let component: FieldComponent;
@@ -11,7 +13,14 @@ describe('FieldComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FieldComponent ]
+      imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule
+      ],
+      declarations: [
+        FieldComponent
+      ]
     })
     .compileComponents();
   }));

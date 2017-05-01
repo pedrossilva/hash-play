@@ -9,7 +9,7 @@ import {FormGroup} from "@angular/forms";
 })
 export class AppComponent {
 
-  private submitted:boolean = false;
+  submitted:boolean = false;
   private previousPlayers:any;
   play:boolean = false;
   form:FormGroup;

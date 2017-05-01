@@ -4,6 +4,8 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { FormComponent } from './form.component';
+import {CommonModule} from "@angular/common";
+import {FormsModule, ReactiveFormsModule, FormBuilder} from "@angular/forms";
 
 describe('FormComponent', () => {
   let component: FormComponent;
@@ -11,9 +13,18 @@ describe('FormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormComponent ]
+      imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule
+      ],
+      declarations: [
+        FormComponent
+      ]
     })
     .compileComponents();
+
+
   }));
 
   beforeEach(() => {
@@ -25,4 +36,5 @@ describe('FormComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
