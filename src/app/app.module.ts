@@ -18,7 +18,7 @@ import { FormModule } from "./form/form.module";
     BrowserModule,
     FormsModule,
     HttpModule,
-    FormModule
+    FormModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

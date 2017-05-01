@@ -1,12 +1,16 @@
 <div class="container">
-  <div class="wrap">
-    <form (ngSubmit)="formSubmit()" [hidden]="play">
-      <app-form></app-form>
-      <div>
-        <button type="submit" class="btn btn-default pull-right">Play</button>
-      </div>
-    </form>
-    <app-frame *ngIf="play" [dataForm]="form.value"></app-frame>
+  <div class="w-box">
+    <div class="box">
+      <form (ngSubmit)="formSubmit()" [hidden]="play" [class.submitted]="submitted">
+        <app-form [submitted]="submitted"></app-form>
+        <div>
+          <button type="submit" class="btn btn-default pull-right">Play</button>
+          <button type="button" *ngIf="previousPlayers" (click)="keepPlayers()"
+                  class="btn btn-default pull-right">Keep players</button>
+        </div>
+      </form>
+      <app-frame *ngIf="play" [dataForm]="form.value" (newPlay)="newPlay()"></app-frame>
+
+    </div>
   </div>
 </div>
-<pre *ngIf="form">{{ form.value | json }}</pre>

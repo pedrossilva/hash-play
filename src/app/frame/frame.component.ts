@@ -1,5 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {FormControl, Validators, FormGroup} from "@angular/forms";
+import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-frame',
@@ -8,16 +7,15 @@ import {FormControl, Validators, FormGroup} from "@angular/forms";
 })
 export class FrameComponent implements OnInit {
 
-  private playerX:boolean = true;
+  private player:string;
   private list:Array<any> = Array(9).fill(null);
   private count:number = 0;
   private winner:string;
   private draw:boolean = false;
   private winners:any = {};
-  private history:any = [];
-  private round:number = 0;
-  private end:boolean = false;
+  private dataSet:{x:string,o:string,winner:string};
   @Input() dataForm:any;
+  @Output() newPlay:EventEmitter<boolean> = new EventEmitter();
 
 
   constructor() {}
@@ -25,29 +23,17 @@ export class FrameComponent implements OnInit {
   choice(position:number) {
     if(this.winner) return;
     if(this.list[position] === null) {
-      this.list[position] = this.playerX === true ? 'x' : 'o';
-      this.playerX = !this.playerX;
+      this.list[position] = this.player;
+      this.player = (this.player === 'x') ? 'o': 'x';
       this.count++;
 
       if(this.count > 2) {
         let winner = this.checkWinner();
         if(winner != null) {
-          setTimeout(
-            () => {
-              // alert(winner+' Winner!');
-              this.winner = winner;
-              this.history[this.round].win = winner;
-              this.checkEnd();
-            }
-          )
+          setTimeout( () => { this.winner = winner } )
         }
         else if(this.count == 9) {
-          setTimeout(
-            () => {
-              this.draw = true;
-              this.checkEnd();
-            }
-          )
+          setTimeout( () => { this.draw = true } )
         }
       }
 
@@ -82,44 +68,24 @@ export class FrameComponent implements OnInit {
     return null;
   }
 
-  checkEnd() {
-    if(this.round >= this.dataForm.rounds-1) {
-      this.end = true;
-      console.log('history', this.history);
-    }
-  }
-
   newRound() {
-    this.playerX = true;
-    this.count = 0;
-    this.winner = undefined;
-    this.draw = false;
-    this.winners = {};
-    this.list = Array(9).fill(null);
-
-    let itemHistory = {win:null};
-    console.log('history', this.round, this.history);
-    console.log('history by round', this.history[this.round]);
-    // if(!this.round)
-    if(this.history[this.round].x == this.dataForm.player1) {
-      itemHistory['x'] = this.dataForm.player2;
-      itemHistory['o'] = this.dataForm.player1;
-    } else {
-      itemHistory['x'] = this.dataForm.player1;
-      itemHistory['o'] = this.dataForm.player2;
-    }
-
-    this.history.push(itemHistory);
-    if(this.round < this.dataForm.rounds-1) this.round++;
-
+    this.newPlay.emit(true);
   }
 
   ngOnInit() {
-    this.history.push({
-      x: this.dataForm.player1,
-      o: this.dataForm.player2,
-      win: null
-    })
+
+    this.player = this.randomChoice(['x','o']);
+
+    this.dataSet = {
+      x: this.dataForm.playerX,
+      o: this.dataForm.playerO,
+      winner: null
+    }
   }
+
+  randomChoice(arr) {
+    return arr[Math.floor(arr.length * Math.random())];
+  }
+
 
 }

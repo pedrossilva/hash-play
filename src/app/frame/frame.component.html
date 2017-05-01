@@ -1,25 +1,23 @@
-<div class="frame" *ngIf="dataForm && !end">
+<div class="frame" *ngIf="dataForm">
 
 
   <div *ngIf="!winner && !draw" class="alert alert-info">
     <strong>
-      Player {{ history[round][(playerX ? 'x': 'o')] }} <i class="fa" [class.fa-times]="playerX" [class.fa-circle-o]="!playerX"></i>
+      Player: {{ dataSet[player] }} ( <i class="fa" [class.fa-times]="player == 'x'" [class.fa-circle-o]="player == 'o'"></i> )
     </strong>
   </div>
   <div *ngIf="winner" class="alert alert-success">
     <strong>
-      Player <i class="fa" [class.fa-times]="winner == 'x'" [class.fa-circle-o]="winner == 'o'"></i> winner!
+      Player: {{ dataSet[winner] }} ( <i class="fa" [class.fa-times]="winner == 'x'" [class.fa-circle-o]="winner == 'o'"></i> ) won!
     </strong>
   </div>
   <div *ngIf="draw" class="alert alert-warning">
-    <strong>
-      Draw!
-    </strong>
+    <strong>Draw!</strong>
   </div>
 
   <ul class="wrap-fields">
     <li *ngFor="let item of list; let i=index">
-      <app-field (click)="choice(i)" [player]="playerX ? 'x':'o'" [val]="item"
+      <app-field (click)="choice(i)" [player]="player" [val]="item"
                  [winner]="winners[i]"></app-field>
     </li>
 
@@ -33,10 +31,3 @@
   </div>
 
 </div>
-
-
-
-<!--<div class="row">
-  <pre class="col-md-6">{{ list | json }}</pre>
-  <pre class="col-md-6">{{ winners | json }}</pre>
-</div>-->

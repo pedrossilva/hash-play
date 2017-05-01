@@ -9,6 +9,8 @@ import {FormGroup} from "@angular/forms";
 })
 export class AppComponent {
 
+  private submitted:boolean = false;
+  private previousPlayers:any;
   play:boolean = false;
   form:FormGroup;
   @ViewChild(FormComponent) set formComponent(fc:FormComponent) {
@@ -18,7 +20,18 @@ export class AppComponent {
   }
 
   formSubmit() {
-    this.play = true;
+    this.submitted = true;
+    if(this.form.valid) this.play = true;
   }
 
+  newPlay() {
+    this.play = false;
+    this.submitted = false;
+    this.previousPlayers = this.form.value;
+    this.form.reset();
+  }
+
+  keepPlayers() {
+    this.form.patchValue(this.previousPlayers);
+  }
 }

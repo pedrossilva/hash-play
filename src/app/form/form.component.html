@@ -1,16 +1,17 @@
 <div class="form" *ngIf="form" [formGroup]="form">
+  <ul class="alert alert-danger" [hidden]="form.valid || !submitted">
+    <li [hidden]="form.get('playerX').valid">Enter the name of the player <i class="fa fa-times"></i></li>
+    <li [hidden]="form.get('playerO').valid">Enter the name of the player <i class="fa fa-circle-o"></i></li>
+    <li [hidden]="!form.errors?.different">The players' names must be different</li>
+  </ul>
 
     <div class="form-group">
-      <label>Player 1</label>
-      <input type="text" formControlName="player1" class="form-control">
+      <label>Player <i class="fa fa-times"></i></label>
+      <input type="text" formControlName="playerX" class="form-control">
     </div>
     <div class="form-group">
-      <label>Player 2</label>
-      <input type="text" formControlName="player2" class="form-control">
-    </div>
-    <div class="form-group">
-      <label>Rounds</label>
-      <input type="number" formControlName="rounds" class="form-control">
+      <label>Player <i class="fa fa-circle-o"></i></label>
+      <input type="text" formControlName="playerO" class="form-control">
     </div>
 
 </div>
