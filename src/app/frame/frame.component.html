@@ -26,8 +26,9 @@
     <div *ngIf="draw || winner || end" class="overlay"></div>
   </ul>
 
-  <div *ngIf="winner || draw">
-    <button class="btn btn-primary pull-right" (click)="newRound()">New</button>
+  <div>
+    <button *ngIf="winner || draw" class="btn btn-primary pull-right" (click)="newRound()">New</button>
+    <button *ngIf="!winner && !draw" class="btn btn-default pull-right" (click)="newRound()">Cancel</button>
   </div>
 
 </div>
